@@ -274,6 +274,28 @@ export default function Home() {
       )?.reduce((a, b) => a + b, 0) ?? 0);
   }
 
+  const getAcceptedProposals  = () => {
+    const totalProposals = records?.grants
+      ?.flatMap((grant) => grant.applications)
+      ?.filter((application) => application.milestones?.filter((milestone) => milestone.application.state === 'approved').length > 0)?.length
+      ?? 0;
+
+   
+
+      const totalProposalsPolygon = recordsPolygon?.grants
+      ?.flatMap((grant) => grant.applications)
+      ?.filter((application) => application.milestones?.filter((milestone) => milestone.application.state === 'approved').length > 0)?.length
+      ?? 0;
+
+      const totalProposalsCelo = recordsCelo?.grants
+      ?.flatMap((grant) => grant.applications)
+      ?.filter((application) => application.milestones?.filter((milestone) => milestone.application.state === 'approved').length > 0)?.length ?? 0;
+
+      console.log(totalProposals, totalProposalsPolygon, totalProposalsCelo);
+    return totalProposals + totalProposalsPolygon + totalProposalsCelo;
+  }
+  
+
 
 
 
@@ -315,9 +337,14 @@ export default function Home() {
         <p className="text-3xl font-bold">{getTotalApplications100Percent()}</p>
       </div>
   
-      <div className="p-4 bg-gray-900 rounded-lg shadow-md col-span-2">
+      {/* <div className="p-4 bg-gray-900 rounded-lg shadow-md col-span-2">
         <h2 className="text-xl font-semibold">Total Users</h2>
         <p className="text-3xl font-bold">{getTotalUsers()}</p>
+      </div> */}
+
+<div className="p-4 bg-gray-900 rounded-lg shadow-md col-span-2">
+        <h2 className="text-xl font-semibold">Total No of Accepted Proposals</h2>
+        <p className="text-3xl font-bold">{(getAcceptedProposals())}</p>
       </div>
   
       <div className="p-4 bg-gray-900 rounded-lg shadow-md col-span-2">

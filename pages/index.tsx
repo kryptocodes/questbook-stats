@@ -347,10 +347,10 @@ export default function Home() {
         <p className="text-3xl font-bold">{(getAcceptedProposals())}</p>
       </div>
   
-      <div className="p-4 bg-gray-900 rounded-lg shadow-md col-span-2">
+      {/* <div className="p-4 bg-gray-900 rounded-lg shadow-md col-span-2">
         <h2 className="text-xl font-semibold">Total Grants Distributed</h2>
         <p className="text-3xl font-bold">{convertToMillions(getTotalGrantsDistributed())}</p>
-      </div>
+      </div> */}
   
       <div className="p-4 bg-gray-900 rounded-lg shadow-md col-span-2">
         <h2 className="text-2xl font-semibold">Total Grants Committed</h2>

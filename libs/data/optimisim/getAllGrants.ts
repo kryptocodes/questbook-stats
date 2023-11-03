@@ -5,7 +5,7 @@ import { optimismClient } from '../../apollo/client'
 
 export const QUERY_OPTIMISIM = gql`
 query getSectionGrants {
-    grants(orderBy: numberOfApplications, orderDirection: desc) {
+    grants(first:1000, orderBy: numberOfApplications, orderDirection: desc,where: {totalGrantFundingCommittedUSD_lte: "100000000"}) {
       id
       title
       deadlineS
@@ -17,8 +17,9 @@ query getSectionGrants {
       updatedAtS
       totalGrantFundingDisbursedUSD
       totalGrantFundingCommittedUSD
+      
       __typename
-      applications {
+      applications(first:1000) {
         applicantPublicKey
         milestones {
           amount
